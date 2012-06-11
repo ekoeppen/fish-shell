@@ -30,6 +30,7 @@
 #include "signal.h"
 #include "autoload.h"
 #include "iothread.h"
+#include "env.h"
 #include <map>
 #include <algorithm>
 
@@ -774,6 +775,7 @@ static wcstring history_filename(const wcstring &name, const wcstring &suffix)
     wcstring result = path;
     result.append(L"/");
     result.append(name);
+    result.append(env_get_string(L"HISTID"));
     result.append(L"_history");
     result.append(suffix);
     return result;
